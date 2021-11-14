@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "install-all": "yarn && cd packages/address-book && yarn",
-    "start": "ts-node src/app.ts"
+    "start": "ts-node src/app.ts",
+    "sushi:prices": "ts-node scripts/getAmmPrices.ts"
   },
   "dependencies": {
     "@koa/cors": "^3.1.0",
