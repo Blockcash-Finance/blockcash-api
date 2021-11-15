@@ -6,7 +6,8 @@
   "scripts": {
     "install-all": "yarn && cd packages/address-book && yarn",
     "start": "ts-node src/app.ts",
-    "sushi:prices": "ts-node scripts/getAmmPrices.ts"
+    "sushi:prices": "ts-node scripts/getAmmPrices.ts",
+    "sushi:tradingFeeApr": "ts-node scripts/getTradingFeeApr.ts"
   },
   "dependencies": {
     "@koa/cors": "^3.1.0",
