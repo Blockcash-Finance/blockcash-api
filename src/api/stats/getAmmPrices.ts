@@ -4,13 +4,14 @@ import { fetchAmmPrices } from "../../utils/fetchAmmPrices";
 // import { fetchMooPrices } from '../../utils/fetchMooPrices';
 
 import sushiCeloPools from "../../data/celo/sushiLpPools.json";
+import ubeswapCeloPools from "../../data/celo/ubeswapLpPools.json";
 
 const INIT_DELAY = 0 * 60 * 1000;
 const REFRESH_INTERVAL = 5 * 60 * 1000;
 
 // FIXME: if this list grows too big we might hit the ratelimit on initialization everytime
 // Implement in case of emergency -> https://github.com/beefyfinance/beefy-api/issues/103
-const pools = [...sushiCeloPools];
+const pools = [...ubeswapCeloPools, ...sushiCeloPools];
 
 const knownPrices = {
   BUSD: 1,
@@ -21,6 +22,7 @@ const knownPrices = {
   UST: 1,
   USDN: 1,
   cUSD: 1,
+  mcUSD: 1,
 };
 
 let tokenPricesCache: Promise<any>;

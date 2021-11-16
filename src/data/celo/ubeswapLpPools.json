@@ -1,0 +1,21 @@
+[
+  {
+    "name": "ubeswap-celo-mcusd-mceur",
+    "address": "0xF94fEA0C87D2b357DC72b743b45A8cB682b0716E",
+    "decimals": "1e18",
+    "poolId": 0,
+    "chainId": 42220,
+    "lp0": {
+      "address": "0x918146359264C492BD6934071c6Bd31C854EDBc3",
+      "oracle": "tokens",
+      "oracleId": "mcUSD",
+      "decimals": "1e18"
+    },
+    "lp1": {
+      "address": "0xE273Ad7ee11dCfAA87383aD5977EE1504aC07568",
+      "oracle": "tokens",
+      "oracleId": "mcEUR",
+      "decimals": "1e18"
+    }
+  }
+]
