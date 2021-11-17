@@ -17,5 +17,43 @@
       "oracleId": "mcEUR",
       "decimals": "1e18"
     }
+  },
+  {
+    "name": "ubeswap-celo-ube-celo",
+    "address": "0xe7b5ad135fa22678f426a381c7748f6a5f2c9e6c",
+    "decimals": "1e18",
+    "poolId": 0,
+    "chainId": 42220,
+    "lp0": {
+      "address": "0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC",
+      "oracle": "tokens",
+      "oracleId": "UBE",
+      "decimals": "1e18"
+    },
+    "lp1": {
+      "address": "0x471EcE3750Da237f93B8E339c536989b8978a438",
+      "oracle": "tokens",
+      "oracleId": "CELO",
+      "decimals": "1e18"
+    }
+  },
+  {
+    "name": "ubeswap-celo-ube-cmco2",
+    "address": "0x148c4ce0019a2e53f63df50a6d9e9c09c5969629",
+    "decimals": "1e18",
+    "poolId": 0,
+    "chainId": 42220,
+    "lp0": {
+      "address": "0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC",
+      "oracle": "tokens",
+      "oracleId": "UBE",
+      "decimals": "1e18"
+    },
+    "lp1": {
+      "address": "0x32A9FE697a32135BFd313a6Ac28792DaE4D9979d",
+      "oracle": "tokens",
+      "oracleId": "cMCO2",
+      "decimals": "1e18"
+    }
   }
 ]
