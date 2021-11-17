@@ -10,7 +10,7 @@ import { LpPool } from "../../../types/LpPool";
 
 // trading apr
 import { SUSHI_LPF } from "../../../constants";
-import { getTradingFeeAprSushi as getTradingFeeApr } from "../../../utils/getTradingFeeApr";
+import { getTradingFeeApr } from "../../../utils/getTradingFeeApr";
 import { NormalizedCacheObject } from "apollo-cache-inmemory";
 import { ApolloClient } from "apollo-client";
 
@@ -37,27 +37,27 @@ interface UbeswapApyParams {
   // https://github.com/sushiswap/sushiswap-interface/blob/6300093e17756038a5b5089282d7bbe6dce87759/src/hooks/minichefv2/useFarms.ts#L77
   nativeTotalAllocPoint: number;
   pools: LpPool[];
-  sushiClient: ApolloClient<NormalizedCacheObject>;
+  ubeswapClient: ApolloClient<NormalizedCacheObject>;
   web3: Web3;
   chainId: ChainId;
 }
 
 export const getUbeswapApys = async (params: UbeswapApyParams) => {
-  const { pools, sushiClient } = params;
+  const { pools, ubeswapClient } = params;
   // const pairAddresses = pools.filter(
   //   (pool) => pool.address !== undefined || pool.address !== ""
   // );
   // console.log("pairAddresses", pairAddresses);
-  /* const tradingAprs = await getTradingFeeApr(
-    sushiClient,
+  const pairAddresses = pools.map((pool) => pool.address);
+  const tradingAprs = await getTradingFeeApr(
+    ubeswapClient,
     pairAddresses,
     SUSHI_LPF
-  ); */
+  );
+  console.log("tradingAprs", tradingAprs);
   const farmApys = await getFarmApys(params);
-  console.log("farmApys", farmApys);
-
-  // return getApyBreakdown(pools, /*tradingAprs,*/ farmApys, SUSHI_LPF);
-  return farmApys;
+  return getApyBreakdown(pools, tradingAprs, farmApys, SUSHI_LPF);
+  // return farmApys;
 };
 
 const getFarmApys = async (params: UbeswapApyParams) => {
@@ -68,115 +68,67 @@ const getFarmApys = async (params: UbeswapApyParams) => {
     nativeOracleId,
     nativeTotalAllocPoint,
     sushiOracleId,
+    chainId,
   } = params;
   const apys = [];
-  const poolManagerContract = new web3.eth.Contract(
-    PoolManager as any,
-    poolManager
-  );
-  // const sushiPerSecond = new BigNumber(
-  //   await minichefContract.methods.sushiPerSecond().call()
+  // const poolManagerContract = new web3.eth.Contract(
+  //   PoolManager as any,
+  //   poolManager
   // );
 
-  const tokenPrice = await fetchPrice({ oracle, id: sushiOracleId });
-  const nativePrice = await fetchPrice({ oracle, id: nativeOracleId });
-  // const { balances, allocPoints, rewardAllocPoints } = await getPoolsData(
-  //   params
-  // );
+  // const tokenPrice = await fetchPrice({ oracle, id: sushiOracleId });
+  // const nativePrice = await fetchPrice({ oracle, id: nativeOracleId });
 
-  console.log("tokenPrice", tokenPrice.toString());
   for (let i = 0; i < pools.length; i++) {
     const pool = pools[i];
     console.log("pool", pool.name);
-
-    const poolInfo = await poolManagerContract.methods
-      .pools(pool.address)
-      .call();
-
-    console.log("pool Address", poolInfo.poolAddress);
-
-    const stakingReward = new web3.eth.Contract(
-      StakingRewards as any,
-      poolInfo.poolAddress
-    );
-
-    const rewardPerSecond = new BigNumber(
-      await stakingReward.methods.rewardRate().call()
-    );
-
-    const balance = new BigNumber(
-      await stakingReward.methods.totalSupply().call()
-    );
-
-    console.log("balance", balance.toString());
-
-    const perWeek = rewardPerSecond
-      ?.times(BIG_INT_SECONDS_IN_WEEK)
-      ?.dividedBy("1e18")
-      ?.toFormat();
-
-    const yearlyRewards = rewardPerSecond?.times(BIG_INT_SECONDS_IN_YEAR);
-
-    console.log("rewardPerSecond", rewardPerSecond.toString());
-    console.log("perWeek", perWeek);
-
-    const lpPrice = await fetchPrice({ oracle: "lps", id: pool.name });
-    const totalStakedInUsd = balance.times(lpPrice).dividedBy("1e18");
-
-    console.log("totalStakedInUsd", totalStakedInUsd.toString());
-
-    const yearlyRewardsInUsd = yearlyRewards
-      .times(tokenPrice)
-      .dividedBy(DECIMALS);
-
-    console.log("yearlyRewardsInUsd", yearlyRewardsInUsd.toString());
-
-    const apy = yearlyRewardsInUsd.dividedBy(totalStakedInUsd);
+    const apy = await getRewardsPerYear(web3, chainId, pool);
     apys.push(apy);
-
-    console.log("apy", apy.toString());
-    console.log("====================");
   }
   return apys;
 };
+const getRewardsPerYear = async (web3, chainId, pool: LpPool) => {
+  let totalStakedInUsdMin = new BigNumber(0);
 
-/*
-const getPoolsData = async (params: UbeswapApyParams) => {
-  const { web3, pools, minichef, complexRewarderTime, chainId } = params;
-  const minichefContract = new web3.eth.Contract(
-    SushiMiniChefV2 as any,
-    minichef
-  );
-  const rewardContract = new web3.eth.Contract(
-    SushiComplexRewarderTime as any,
-    complexRewarderTime
-  );
+  let rewardPerSecondCalls = [];
+  let balanceCalls = [];
+  pool.stakingReward.forEach((reward) => {
+    const stakingReward = new web3.eth.Contract(
+      StakingRewards as any,
+      reward.address
+    );
 
-  const balanceCalls = [];
-  const allocPointCalls = [];
-  const rewardAllocPointCalls = [];
-  pools.forEach((pool) => {
-    const tokenContract = new web3.eth.Contract(ERC20 as any, pool.address);
     balanceCalls.push({
-      balance: tokenContract.methods.balanceOf(minichef),
+      balance: stakingReward.methods.totalSupply(),
     });
-    allocPointCalls.push({
-      allocPoint: minichefContract.methods.poolInfo(pool.poolId),
-    });
-    rewardAllocPointCalls.push({
-      allocPoint: rewardContract.methods.poolInfo(pool.poolId),
+    rewardPerSecondCalls.push({
+      rewardPerSecond: stakingReward.methods.rewardRate(),
     });
   });
 
   const multicall = new MultiCall(web3 as any, multicallAddress(chainId));
-  const res = await multicall.all([
-    balanceCalls,
-    allocPointCalls,
-    rewardAllocPointCalls,
-  ]);
+  const res = await multicall.all([balanceCalls, rewardPerSecondCalls]);
 
   const balances = res[0].map((v) => new BigNumber(v.balance));
-  const allocPoints = res[1].map((v) => v.allocPoint["2"]);
-  const rewardAllocPoints = res[2].map((v) => v.allocPoint["2"]);
-  return { balances, allocPoints, rewardAllocPoints };
-}; */
+  const rewardPerSeconds = res[1].map((v) => new BigNumber(v.rewardPerSecond));
+
+  const balance = balances[0];
+  const lpPrice = await fetchPrice({ oracle: "lps", id: pool.name });
+  const totalStakedInUsd = balance.times(lpPrice).dividedBy("1e18");
+
+  let yearlyRewardsTotalInUsd = new BigNumber(0);
+  for (let i = 0; i < rewardPerSeconds.length; i++) {
+    const rewardPerSecond = rewardPerSeconds[i];
+    const tokenPrice = await fetchPrice({
+      oracle,
+      id: pool?.stakingReward[i].rewardTokenSymbol,
+    });
+    const yearlyRewards = rewardPerSecond?.times(BIG_INT_SECONDS_IN_YEAR);
+    const yearlyRewardsInUsd = yearlyRewards
+      .times(tokenPrice)
+      .dividedBy(DECIMALS);
+    yearlyRewardsTotalInUsd = yearlyRewardsInUsd.plus(yearlyRewardsTotalInUsd);
+  }
+
+  return yearlyRewardsTotalInUsd.dividedBy(totalStakedInUsd);
+};

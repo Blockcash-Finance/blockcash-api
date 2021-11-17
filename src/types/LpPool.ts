@@ -1,4 +1,4 @@
-import { ChainId } from '../../packages/address-book/address-book';
+import { ChainId } from "../../packages/address-book/address-book";
 
 export interface LpPool {
   name: string;
@@ -15,6 +15,7 @@ export interface LpPool {
   oracle?: string;
   oracleId?: string;
   depositFee?: number;
+  stakingReward?: [{ address: string; rewardTokenSymbol: string }];
 }
 
 export interface SingleAssetPool {

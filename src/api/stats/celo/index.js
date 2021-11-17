@@ -1,18 +1,19 @@
-const { getSushiCeloApys } = require('./getSushiCeloApys');
+const { getSushiCeloApys } = require("./getSushiCeloApys");
+const { getUbeswapCeloApys } = require("./getubeswapCeloApys");
 
-const getApys = [getSushiCeloApys];
+const getApys = [getSushiCeloApys, getUbeswapCeloApys];
 
 const getCeloApys = async () => {
   let apys = {};
   let apyBreakdowns = {};
 
   let promises = [];
-  getApys.forEach(getApy => promises.push(getApy()));
+  getApys.forEach((getApy) => promises.push(getApy()));
   const results = await Promise.allSettled(promises);
 
   for (const result of results) {
-    if (result.status !== 'fulfilled') {
-      console.warn('getCeloApys error', result.reason);
+    if (result.status !== "fulfilled") {
+      console.warn("getCeloApys error", result.reason);
       continue;
     }
 
@@ -29,7 +30,7 @@ const getCeloApys = async () => {
     }
 
     // Break out to apy and breakdowns if possible
-    let hasApyBreakdowns = 'apyBreakdowns' in result.value;
+    let hasApyBreakdowns = "apyBreakdowns" in result.value;
     if (hasApyBreakdowns) {
       mappedApyValues = result.value.apys;
       mappedApyBreakdownValues = result.value.apyBreakdowns;

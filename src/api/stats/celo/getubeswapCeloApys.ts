@@ -2,7 +2,7 @@ import { celoWeb3 } from "../../../utils/web3";
 import { CELO_CHAIN_ID } from "../../../constants";
 
 import { getUbeswapApys } from "../common/getUbeswapApys";
-import { sushiCeloClient } from "../../../apollo/client";
+import { ubeswapClient } from "../../../apollo/client";
 
 import pools from "../../../data/celo/ubeswapLpPools.json";
 
@@ -23,7 +23,7 @@ export const getUbeswapCeloApys = () => {
     nativeOracleId: CELO.symbol,
     nativeTotalAllocPoint: 9600,
     pools,
-    sushiClient: sushiCeloClient,
+    ubeswapClient,
     web3: celoWeb3,
     chainId: CELO_CHAIN_ID,
   });
