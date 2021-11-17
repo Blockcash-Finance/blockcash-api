@@ -1,7 +1,7 @@
-import { getCeloApys } from "../src/api/stats/celo";
+import { getUbeswapCeloApys } from "../src/api/stats/celo/getubeswapCeloApys";
 
 async function main() {
-  const celoApys = await getCeloApys();
+  const celoApys = await getUbeswapCeloApys();
   console.log("celoApys", celoApys);
 }
 

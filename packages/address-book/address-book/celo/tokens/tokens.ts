@@ -1,102 +1,111 @@
-import { ConstRecord } from '../../../types/const';
-import Token from '../../../types/token';
+import { ConstRecord } from "../../../types/const";
+import Token from "../../../types/token";
 
 const CELO = {
-  name: 'CELO',
-  address: '0x471EcE3750Da237f93B8E339c536989b8978a438',
-  symbol: 'CELO',
+  name: "CELO",
+  address: "0x471EcE3750Da237f93B8E339c536989b8978a438",
+  symbol: "CELO",
   decimals: 18,
   chainId: 42220,
-  website: 'https://celo.org/',
+  website: "https://celo.org/",
   description:
-    'Celo is a mobile-first platform that makes financial dApps and crypto payments accessible to anyone with a mobile phone',
+    "Celo is a mobile-first platform that makes financial dApps and crypto payments accessible to anyone with a mobile phone",
   logoURI:
-    'https://res.cloudinary.com/dnz2bkszg/image/fetch/f_auto/https://raw.githubusercontent.com/sushiswap/icons/master/token/one.jpg',
+    "https://res.cloudinary.com/dnz2bkszg/image/fetch/f_auto/https://raw.githubusercontent.com/sushiswap/icons/master/token/one.jpg",
 } as const;
 
 const WCELO = {
   ...CELO,
-  symbol: 'WCELO',
+  symbol: "WCELO",
 };
 
 const SUSHI = {
-  name: 'Sushi Swap',
-  symbol: 'SUSHI',
-  address: '0xD15EC721C2A896512Ad29C671997DD68f9593226',
+  name: "Sushi Swap",
+  symbol: "SUSHI",
+  address: "0xD15EC721C2A896512Ad29C671997DD68f9593226",
   chainId: 42220,
   decimals: 18,
-  website: 'https://sushi.com/',
+  website: "https://sushi.com/",
   description:
-    'Sushi is the home of DeFi. Their community is building a comprehensive, decentralized trading platform for the future of finance. Swap, earn, stack yields, lend, borrow, leverage all on one decentralized, community driven platform.',
-  logoURI: 'https://ftmscan.com/token/images/sushiswap_32.png',
+    "Sushi is the home of DeFi. Their community is building a comprehensive, decentralized trading platform for the future of finance. Swap, earn, stack yields, lend, borrow, leverage all on one decentralized, community driven platform.",
+  logoURI: "https://ftmscan.com/token/images/sushiswap_32.png",
 };
 
 const _tokens = {
   CELO,
   WCELO: WCELO,
   WNATIVE: WCELO,
+  UBE: {
+    address: "0x00be915b9dcf56a3cbe739d9b9c202ca692409ec",
+    name: "Ubeswap Governance Token",
+    symbol: "UBE",
+    chainId: 42220,
+    decimals: 18,
+    logoURI:
+      "https://raw.githubusercontent.com/ubeswap/default-token-list/master/assets/asset_UBE.png",
+  },
   BIFI: {
     chainId: 42220,
-    address: '0x639A647fbe20b6c8ac19E48E2de44ea792c62c5C',
+    address: "0x639A647fbe20b6c8ac19E48E2de44ea792c62c5C",
     decimals: 18,
-    name: 'Beefy.Finance',
-    symbol: 'BIFI',
-    website: 'https://www.beefy.finance/',
+    name: "Beefy.Finance",
+    symbol: "BIFI",
+    website: "https://www.beefy.finance/",
     description:
-      'Beefy Finance is a Decentralized, Multi-Chain Yield Optimizer platform that allows its users to earn compound interest on their crypto holdings.',
+      "Beefy Finance is a Decentralized, Multi-Chain Yield Optimizer platform that allows its users to earn compound interest on their crypto holdings.",
     logoURI:
-      'https://raw.githubusercontent.com/beefyfinance/beefy-app/prod/src/images/single-assets/BIFI.png',
+      "https://raw.githubusercontent.com/beefyfinance/beefy-app/prod/src/images/single-assets/BIFI.png",
   },
   cUSD: {
-    name: 'Celo Dollar',
-    symbol: 'cUSD',
-    address: '0x765DE816845861e75A25fCA122bb6898B8B1282a',
+    name: "Celo Dollar",
+    symbol: "cUSD",
+    address: "0x765DE816845861e75A25fCA122bb6898B8B1282a",
     chainId: 42220,
     decimals: 18,
     logoURI:
-      'https://res.cloudinary.com/sushi-cdn/image/fetch/w_48/https://raw.githubusercontent.com/sushiswap/logos/main/network/celo/0x765DE816845861e75A25fCA122bb6898B8B1282a.jpg',
-    website: 'https://celo.org/dapps',
-    description: 'Celo Pegged Dollar',
+      "https://res.cloudinary.com/sushi-cdn/image/fetch/w_48/https://raw.githubusercontent.com/sushiswap/logos/main/network/celo/0x765DE816845861e75A25fCA122bb6898B8B1282a.jpg",
+    website: "https://celo.org/dapps",
+    description: "Celo Pegged Dollar",
   },
   cEUR: {
-    name: 'Celo Euro',
-    symbol: 'cEUR',
-    address: '0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73',
+    name: "Celo Euro",
+    symbol: "cEUR",
+    address: "0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73",
     chainId: 42220,
     decimals: 18,
     logoURI:
-      'https://res.cloudinary.com/sushi-cdn/image/fetch/w_48/https://raw.githubusercontent.com/sushiswap/logos/main/network/celo/0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73.jpg',
-    website: 'https://celo.org/dapps',
-    description: 'Celo Pegged Euro',
+      "https://res.cloudinary.com/sushi-cdn/image/fetch/w_48/https://raw.githubusercontent.com/sushiswap/logos/main/network/celo/0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73.jpg",
+    website: "https://celo.org/dapps",
+    description: "Celo Pegged Euro",
   },
   WETH: {
-    name: 'Wrapped Ether',
-    symbol: 'WETH',
-    address: '0xE919F65739c26a42616b7b8eedC6b5524d1e3aC4',
+    name: "Wrapped Ether",
+    symbol: "WETH",
+    address: "0xE919F65739c26a42616b7b8eedC6b5524d1e3aC4",
     chainId: 42220,
     decimals: 18,
-    website: 'https://ethereum.org/',
+    website: "https://ethereum.org/",
     description:
-      'The native currency that flows within the Ethereum economy is called Ether (ETH). Ether is typically used to pay for transaction fees called Gas, and it is the base currency of the network.',
+      "The native currency that flows within the Ethereum economy is called Ether (ETH). Ether is typically used to pay for transaction fees called Gas, and it is the base currency of the network.",
     logoURI:
-      'https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15/logo.png',
+      "https://raw.githubusercontent.com/ava-labs/bridge-tokens/main/avalanche-tokens/0xf20d962a6c8f70c731bd838a3a388D7d48fA6e15/logo.png",
   },
   DAI: {
-    name: 'Dai Stablecoin',
-    symbol: 'DAI',
-    address: '0xE4fE50cdD716522A56204352f00AA110F731932d',
+    name: "Dai Stablecoin",
+    symbol: "DAI",
+    address: "0xE4fE50cdD716522A56204352f00AA110F731932d",
     chainId: 42220,
     decimals: 18,
-    website: 'https://makerdao.com/en/',
+    website: "https://makerdao.com/en/",
     description:
-      'DAI is an Ethereum-based stablecoin (stable-price cryptocurrency) whose issuance and development is managed by the Maker Protocol and the MakerDAO decentralized autonomous organization.',
+      "DAI is an Ethereum-based stablecoin (stable-price cryptocurrency) whose issuance and development is managed by the Maker Protocol and the MakerDAO decentralized autonomous organization.",
     logoURI:
-      'https://pancakeswap.finance/images/tokens/0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3.png',
+      "https://pancakeswap.finance/images/tokens/0x1af3f329e8be154074d8769d1ffa4ee058b1dbc3.png",
   },
   SUSHI,
   cSUSHI: {
     ...SUSHI,
-    symbol: 'cSUSHI',
+    symbol: "cSUSHI",
   },
 } as const;
 
