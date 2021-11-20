@@ -50,5 +50,29 @@
       "oracleId": "cMCO2",
       "decimals": "1e18"
     }
+  },
+  {
+    "name": "ubeswap-celo-stabilusd-celo",
+    "address": "0x15292280Dd7fa91D4460e26fAfB5F6dD457C5A5D",
+    "decimals": "1e18",
+    "stakingReward": [
+      {
+        "address": "0xCbd7200d8aaeC695e160D39cA27987B858077c5e",
+        "rewardTokenSymbol": "UBE"
+      }
+    ],
+    "chainId": 42220,
+    "lp0": {
+      "address": "0x0a60c25Ef6021fC3B479914E6bcA7C03c18A97f1",
+      "oracle": "tokens",
+      "oracleId": "stabilUSD",
+      "decimals": "1e18"
+    },
+    "lp1": {
+      "address": "0x471EcE3750Da237f93B8E339c536989b8978a438",
+      "oracle": "tokens",
+      "oracleId": "CELO",
+      "decimals": "1e18"
+    }
   }
 ]
