@@ -98,5 +98,33 @@
       "oracleId": "PREMIO",
       "decimals": "1e18"
     }
+  },
+  {
+    "name": "ubeswap-celo-crv-mcusd",
+    "address": "0xda36A59Ea2D8e5A4dE21Fb153b8dEd5a62BAd9D1",
+    "decimals": "1e18",
+    "stakingReward": [
+      {
+        "address": "0xA92Bb4D6399Be5403d6c8DF3cce4dd991ca8EaFc",
+        "rewardTokenSymbol": "UBE"
+      },
+      {
+        "address": "0x85B21208C0058019bc8004D85eFEa881E7598D17",
+        "rewardTokenSymbol": "CELO"
+      }
+    ],
+    "chainId": 42220,
+    "lp0": {
+      "address": "0x0a7432cF27F1aE3825c313F3C81e7D3efD7639aB",
+      "oracle": "tokens",
+      "oracleId": "CRV",
+      "decimals": "1e18"
+    },
+    "lp1": {
+      "address": "0x918146359264C492BD6934071c6Bd31C854EDBc3",
+      "oracle": "tokens",
+      "oracleId": "mcUSD",
+      "decimals": "1e18"
+    }
   }
 ]
