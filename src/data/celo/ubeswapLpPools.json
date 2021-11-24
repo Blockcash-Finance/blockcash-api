@@ -126,5 +126,33 @@
       "oracleId": "mcUSD",
       "decimals": "1e18"
     }
+  },
+  {
+    "name": "ubeswap-celo-celo-knx",
+    "address": "0x806e181798465edF56C66E29e2df01CAF4013f76",
+    "decimals": "1e18",
+    "stakingReward": [
+      {
+        "address": "0x1f1678Cc7358F4ed808B53733Bc49c4CFFe8A075",
+        "rewardTokenSymbol": "KNX"
+      },
+      {
+        "address": "0x7313fDf9D8Cab87E54efc8905B9D7d4BA3Fe7c8D",
+        "rewardTokenSymbol": "UBE"
+      }
+    ],
+    "chainId": 42220,
+    "lp0": {
+      "address": "0x471EcE3750Da237f93B8E339c536989b8978a438",
+      "oracle": "tokens",
+      "oracleId": "CELO",
+      "decimals": "1e18"
+    },
+    "lp1": {
+      "address": "0xa81D9a2d29373777E4082d588958678a6Df5645c",
+      "oracle": "tokens",
+      "oracleId": "KNX",
+      "decimals": "1e18"
+    }
   }
 ]
