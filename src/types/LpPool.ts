@@ -2,7 +2,7 @@ import { ChainId } from "../../packages/address-book/address-book";
 
 export interface LpPool {
   name: string;
-  farmType?: string;
+  farmType?: { name: string; param1: string };
   platform?: string;
   rewardPool?: string;
   address: string;

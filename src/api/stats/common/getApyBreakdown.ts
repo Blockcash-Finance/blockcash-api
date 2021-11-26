@@ -2,6 +2,7 @@ import BigNumber from "bignumber.js";
 
 import getFarmWithTradingFeesApy from "../../../utils/getFarmWithTradingFeesApy";
 import { compound } from "../../../utils/compound";
+import { LpPool } from "../../../types/LpPool";
 
 import {
   BASE_HPY,
@@ -25,7 +26,7 @@ export interface ApyBreakdownResult {
 }
 
 export const getApyBreakdown = (
-  pools: { name: string; address: string }[],
+  pools: LpPool[],
   tradingAprs: Record<string, BigNumber>,
   farmAprs: BigNumber[],
   providerFee: number,
@@ -37,21 +38,22 @@ export const getApyBreakdown = (
   };
 
   pools.forEach((pool, i) => {
+    const farmType = pool?.farmType;
+    let shareAfterPerformanceFee = SHARE_AFTER_PERFORMANCE_FEE;
+    if (farmType && farmType.name === "love") {
+      shareAfterPerformanceFee =
+        SHARE_AFTER_PERFORMANCE_FEE / parseInt(farmType.param1);
+    }
     const simpleApr = farmAprs[i]?.toNumber();
-    const vaultApr = simpleApr * SHARE_AFTER_PERFORMANCE_FEE;
-    const vaultApy = compound(
-      simpleApr,
-      BASE_HPY,
-      1,
-      SHARE_AFTER_PERFORMANCE_FEE
-    );
+    const vaultApr = simpleApr * shareAfterPerformanceFee;
+    const vaultApy = compound(simpleApr, BASE_HPY, 1, shareAfterPerformanceFee);
     const tradingApr = tradingAprs[pool.address.toLowerCase()]?.toNumber();
     const totalApy = getFarmWithTradingFeesApy(
       simpleApr,
       tradingApr,
       BASE_HPY,
       1,
-      SHARE_AFTER_PERFORMANCE_FEE
+      shareAfterPerformanceFee
     );
 
     // Add token to APYs object
