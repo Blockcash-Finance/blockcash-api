@@ -156,31 +156,6 @@
     }
   },
   {
-    "name": "ubeswap-celo-ube-premio-love-celo",
-    "address": "0x12E42ccf14B283Ef0a36A791892D18BF75Da5c80",
-    "decimals": "1e18",
-    "stakingReward": [
-      {
-        "address": "0x478b8D37eE976228d17704d95B5430Cd93a31b87",
-        "rewardTokenSymbol": "PREMIO"
-      }
-    ],
-    "farmType": { "name": "love", "param1": "2" },
-    "chainId": 42220,
-    "lp0": {
-      "address": "0x00Be915B9dCf56a3CBE739D9B9c202ca692409EC",
-      "oracle": "tokens",
-      "oracleId": "UBE",
-      "decimals": "1e18"
-    },
-    "lp1": {
-      "address": "0x94140c2eA9D208D8476cA4E3045254169791C59e",
-      "oracle": "tokens",
-      "oracleId": "PREMIO",
-      "decimals": "1e18"
-    }
-  },
-  {
     "name": "ubeswap-celo-source-mcusd",
     "address": "0x1265bb3e69968A14fF7c4d8204b17c6B79A7FF52",
     "decimals": "1e18",
@@ -209,6 +184,35 @@
       "address": "0x918146359264C492BD6934071c6Bd31C854EDBc3",
       "oracle": "tokens",
       "oracleId": "mcUSD",
+      "decimals": "1e18"
+    }
+  },
+  {
+    "name": "ubeswap-celo-celo-knx-love",
+    "address": "0x806e181798465edF56C66E29e2df01CAF4013f76",
+    "decimals": "1e18",
+    "stakingReward": [
+      {
+        "address": "0x1f1678Cc7358F4ed808B53733Bc49c4CFFe8A075",
+        "rewardTokenSymbol": "KNX"
+      },
+      {
+        "address": "0x7313fDf9D8Cab87E54efc8905B9D7d4BA3Fe7c8D",
+        "rewardTokenSymbol": "UBE"
+      }
+    ],
+    "chainId": 42220,
+    "farmType": { "name": "love", "param1": "2" },
+    "lp0": {
+      "address": "0x471EcE3750Da237f93B8E339c536989b8978a438",
+      "oracle": "tokens",
+      "oracleId": "CELO",
+      "decimals": "1e18"
+    },
+    "lp1": {
+      "address": "0xa81D9a2d29373777E4082d588958678a6Df5645c",
+      "oracle": "tokens",
+      "oracleId": "KNX",
       "decimals": "1e18"
     }
   }
