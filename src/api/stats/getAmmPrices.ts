@@ -39,7 +39,8 @@ const updateAmmPrices = async () => {
 
     const tokenPrices = ammPrices.then(async ({ _, tokenPrices }) => {
       // const mooTokenPrices = await mooPrices;
-      return { ...tokenPrices /*...mooTokenPrices */ };
+      const mCELO = tokenPrices["CELO"];
+      return { ...tokenPrices, mCELO /*...mooTokenPrices */ };
     });
 
     const lpPrices = ammPrices.then(async ({ poolPrices, _ }) => {

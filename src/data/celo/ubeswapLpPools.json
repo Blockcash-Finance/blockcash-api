@@ -243,5 +243,33 @@
       "oracleId": "mcUSD",
       "decimals": "1e18"
     }
+  },
+  {
+    "name": "ubeswap-celo-sol-celo",
+    "address": "0x01522C42cA43D7BfD34f373d41AD7d90a95E714C",
+    "decimals": "1e18",
+    "stakingReward": [
+      {
+        "address": "0x83470506ba97dB33Df0EBe01E876C6718C762Df6",
+        "rewardTokenSymbol": "CELO"
+      },
+      {
+        "address": "0x33cD870547DD6F30db86e7EE7707DC78e7825289",
+        "rewardTokenSymbol": "UBE"
+      }
+    ],
+    "chainId": 42220,
+    "lp0": {
+      "address": "0x173234922eB27d5138c5e481be9dF5261fAeD450",
+      "oracle": "tokens",
+      "oracleId": "SOL",
+      "decimals": "1e18"
+    },
+    "lp1": {
+      "address": "0x471EcE3750Da237f93B8E339c536989b8978a438",
+      "oracle": "tokens",
+      "oracleId": "CELO",
+      "decimals": "1e18"
+    }
   }
 ]
