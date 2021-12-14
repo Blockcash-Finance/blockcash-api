@@ -271,5 +271,37 @@
       "oracleId": "CELO",
       "decimals": "1e18"
     }
+  },
+  {
+    "name": "ubeswap-celo-moo-mcelo",
+    "address": "0x9272388FDf2D6bFbA8b1Cdd99732A3D552a71346",
+    "decimals": "1e18",
+    "stakingReward": [
+      {
+        "address": "0xE76525610652fFC3aF751Ab0dcC3448B345051F6",
+        "rewardTokenSymbol": "CELO"
+      },
+      {
+        "address": "0xBA7dCc70c68e11633d7DACBAFa493Af61D0c5B1d",
+        "rewardTokenSymbol": "MOO"
+      },
+      {
+        "address": "0x54097E406DFC00B9179167F9E20B26406Ad42f0F",
+        "rewardTokenSymbol": "UBE"
+      }
+    ],
+    "chainId": 42220,
+    "lp0": {
+      "address": "0x17700282592D6917F6A73D0bF8AcCf4D578c131e",
+      "oracle": "tokens",
+      "oracleId": "MOO",
+      "decimals": "1e18"
+    },
+    "lp1": {
+      "address": "0x7D00cd74FF385c955EA3d79e47BF06bD7386387D",
+      "oracle": "tokens",
+      "oracleId": "CELO",
+      "decimals": "1e18"
+    }
   }
 ]
