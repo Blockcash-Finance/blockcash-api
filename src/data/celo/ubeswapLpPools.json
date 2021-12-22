@@ -303,5 +303,33 @@
       "oracleId": "CELO",
       "decimals": "1e18"
     }
+  },
+  {
+    "name": "ubeswap-celo-mcusd-wbtc",
+    "address": "0x0448E99ab5f8230713a9f5D7E64eC2aB6e5952a3",
+    "decimals": "1e18",
+    "stakingReward": [
+      {
+        "address": "0xE6AD921bDa9F4971aBc8FA78cBD07AeB5c1A61ea",
+        "rewardTokenSymbol": "CELO"
+      },
+      {
+        "address": "0xc6910dB4156B535966E4a7e8CcA7D39579b99A81",
+        "rewardTokenSymbol": "UBE"
+      }
+    ],
+    "chainId": 42220,
+    "lp0": {
+      "address": "0x918146359264C492BD6934071c6Bd31C854EDBc3",
+      "oracle": "tokens",
+      "oracleId": "mcUSD",
+      "decimals": "1e18"
+    },
+    "lp1": {
+      "address": "0xBAAB46E28388d2779e6E31Fd00cF0e5Ad95E327B",
+      "oracle": "tokens",
+      "oracleId": "WBTC",
+      "decimals": "1e18"
+    }
   }
 ]
