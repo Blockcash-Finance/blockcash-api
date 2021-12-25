@@ -331,5 +331,65 @@
       "oracleId": "WBTC",
       "decimals": "1e18"
     }
+  },
+  {
+    "name": "ubeswap-celo-ari-celo",
+    "address": "0x65596e0f281b0CBcba0aA261982690E9BCBa7247",
+    "decimals": "1e18",
+    "stakingReward": [
+      {
+        "address": "0xEfe2f9d62E45815837b4f20c1F44F0A83605B540",
+        "rewardTokenSymbol": "ARI"
+      },
+      {
+        "address": "0xFEB0df4542E5394aAc89383c135E2Fc829812C6c",
+        "rewardTokenSymbol": "UBE"
+      }
+    ],
+    "chainId": 42220,
+    "lp0": {
+      "address": "0x20677d4f3d0F08e735aB512393524A3CfCEb250C",
+      "oracle": "tokens",
+      "oracleId": "ARI",
+      "decimals": "1e18"
+    },
+    "lp1": {
+      "address": "0x471EcE3750Da237f93B8E339c536989b8978a438",
+      "oracle": "tokens",
+      "oracleId": "CELO",
+      "decimals": "1e18"
+    }
+  },
+  {
+    "name": "ubeswap-celo-pact-celo",
+    "address": "0x39AC98447f28612D3583e46E57cb106337FCAe3F",
+    "decimals": "1e18",
+    "stakingReward": [
+      {
+        "address": "0x6F11B6eA70DEe4f167b1A4ED1F01C903f6781960",
+        "rewardTokenSymbol": "CELO"
+      },
+      {
+        "address": "0xFc26229c90E6236fC85c492b738c6E496c177cd0",
+        "rewardTokenSymbol": "PACT"
+      },
+      {
+        "address": "0x833Febc01260D8f3DCc98393c216A025E90b405d",
+        "rewardTokenSymbol": "UBE"
+      }
+    ],
+    "chainId": 42220,
+    "lp0": {
+      "address": "0x46c9757C5497c5B1f2eb73aE79b6B67D119B0B58",
+      "oracle": "tokens",
+      "oracleId": "PACT",
+      "decimals": "1e18"
+    },
+    "lp1": {
+      "address": "0x471EcE3750Da237f93B8E339c536989b8978a438",
+      "oracle": "tokens",
+      "oracleId": "CELO",
+      "decimals": "1e18"
+    }
   }
 ]
