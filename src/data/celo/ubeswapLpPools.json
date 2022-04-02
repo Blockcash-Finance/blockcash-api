@@ -423,5 +423,33 @@
       "oracleId": "mcEUR",
       "decimals": "1e18"
     }
+  },
+  {
+    "name": "ubeswap-celo-mcusd-immo",
+    "address": "0x7d63809EBF83EF54c7CE8dEd3591D4E8Fc2102eE",
+    "decimals": "1e18",
+    "stakingReward": [
+      {
+        "address": "0xf01E43ebEC5aD24F8a8A9dDf78bf42186E158ED2",
+        "rewardTokenSymbol": "CELO"
+      },
+      {
+        "address": "0x155DA6F164D925E3a91F510B50DEC08aA03B4071",
+        "rewardTokenSymbol": "UBE"
+      }
+    ],
+    "chainId": 42220,
+    "lp0": {
+      "address": "0x918146359264C492BD6934071c6Bd31C854EDBc3",
+      "oracle": "tokens",
+      "oracleId": "mcUSD",
+      "decimals": "1e18"
+    },
+    "lp1": {
+      "address": "0xE685d21b7B0FC7A248a6A8E03b8Db22d013Aa2eE",
+      "oracle": "tokens",
+      "oracleId": "IMMO",
+      "decimals": "1e18"
+    }
   }
 ]
